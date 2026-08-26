@@ -249,8 +249,9 @@ describe('RealtimeEventsPanel', () => {
     expect(markup).toContain('gpt-5.4');
     expect(markup).not.toContain('Resolved');
     expect(markup).not.toContain('POST /v1/chat/completions');
-    expect(markup).toContain('Failed');
-    expect(markup).toContain('>Elapsed</th>');
+expect(markup).toContain('>429<');
+	    expect(markup).not.toContain('>Failed<');
+	    expect(markup).toContain('>Elapsed</th>');
     expect(markup).toContain('>TTFT</span><span class=');
     expect(markup).toContain('500 ms');
     expect(markup).toContain('Elapsed');

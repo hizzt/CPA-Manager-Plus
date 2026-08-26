@@ -710,7 +710,9 @@ function RealtimeRequestDiagnosticStatus({
           details.failed ? styles.realtimeRequestStatusBad : styles.realtimeRequestStatusGood
         }`}
       >
-        {t(details.failed ? 'monitoring.result_failed' : 'monitoring.result_success')}
+        {details.failed
+          ? details.statusCode ?? t('monitoring.result_failed')
+          : t('monitoring.result_success')}
       </span>
       {!isBrowser ? tooltip : null}
       {isBrowser && open ? createPortal(tooltip, document.body) : null}
@@ -1218,7 +1220,7 @@ export function RealtimeEventsPanel({
                             .join(' ')}
                         >
                           {row.failed
-                            ? t('monitoring.result_failed')
+                            ? row.failStatusCode ?? t('monitoring.result_failed')
                             : t('monitoring.result_success')}
                         </span>
                       )}
